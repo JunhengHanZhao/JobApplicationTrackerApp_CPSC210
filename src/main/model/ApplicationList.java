@@ -25,8 +25,14 @@ public class ApplicationList {
     // REQUIRES: application has to exist, companyName and positionName has length >0
     // MODIFIES: This
     // EFFECTS: remove an application from application list
-    public void removeApplication(String companyName, String positionName) {
-        this.applicationList.remove(companyName + "_" + positionName);
+
+    public void removeApplication(Application selectedApplication) {
+        this.applicationList.remove(selectedApplication.getCompanyName() + "_"
+                + selectedApplication.getPositionName());
+    }
+
+    public Application getApplication(String companyName, String positionName) {
+        return this.applicationList.get(companyName + "_" + positionName);
     }
 
     public HashMap<String, Application> getApplicationList() {

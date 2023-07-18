@@ -3,7 +3,6 @@
 ### Functionalities:
 This program is a tool to manage job applications. It will
 help the users to:
-- Manage the related documents
 - Set deadline reminders
 - Keep on track of feedbacks
 - Sorting the application

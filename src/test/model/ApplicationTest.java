@@ -51,31 +51,31 @@ class ApplicationTest {
         assertEquals(5, testApplication3.getApplicationDeadline());
     }
 
-    @Test
-    void testDocuments() {
-        testApplication1.addDocument("CV",true);
-        testApplication2.addDocument("CV",false);
-        testApplication3.addDocument("PS",true);
-        assertTrue(testApplication1.getDocumentList().containsKey("CV"));
-        assertTrue(testApplication2.getDocumentList().containsKey("CV"));
-        assertTrue(testApplication3.getDocumentList().containsKey("PS"));
-        assertTrue(testApplication1.getDocumentList().get("CV"));
-        assertFalse(testApplication2.getDocumentList().get("CV"));
-        assertTrue(testApplication3.getDocumentList().get("PS"));
-        testApplication1.addDocument("PS",true);
-        testApplication2.addDocument("PS",false);
-        testApplication3.addDocument("CV",true);
-        testApplication1.modifyDocumentStatus("PS",false);
-        testApplication2.modifyDocumentStatus("PS",true);
-        testApplication3.modifyDocumentStatus("PS",false);
-        assertFalse(testApplication1.getDocumentList().get("PS"));
-        assertTrue(testApplication2.getDocumentList().get("PS"));
-        assertFalse(testApplication3.getDocumentList().get("PS"));
-        testApplication1.removeDocument("CV");
-        testApplication2.removeDocument("CV");
-        testApplication3.removeDocument("CV");
-        assertFalse(testApplication1.getDocumentList().containsKey("CV"));
-        assertFalse(testApplication2.getDocumentList().containsKey("CV"));
-        assertFalse(testApplication3.getDocumentList().containsKey("CV"));
-    }
+//    @Test
+//    void testDocuments() {
+//        testApplication1.addDocument("CV",true);
+//        testApplication2.addDocument("CV",false);
+//        testApplication3.addDocument("PS",true);
+//        assertTrue(testApplication1.getDocumentList().containsKey("CV"));
+//        assertTrue(testApplication2.getDocumentList().containsKey("CV"));
+//        assertTrue(testApplication3.getDocumentList().containsKey("PS"));
+//        assertTrue(testApplication1.getDocumentList().get("CV"));
+//        assertFalse(testApplication2.getDocumentList().get("CV"));
+//        assertTrue(testApplication3.getDocumentList().get("PS"));
+//        testApplication1.addDocument("PS",true);
+//        testApplication2.addDocument("PS",false);
+//        testApplication3.addDocument("CV",true);
+//        testApplication1.modifyDocumentStatus("PS",false);
+//        testApplication2.modifyDocumentStatus("PS",true);
+//        testApplication3.modifyDocumentStatus("PS",false);
+//        assertFalse(testApplication1.getDocumentList().get("PS"));
+//        assertTrue(testApplication2.getDocumentList().get("PS"));
+//        assertFalse(testApplication3.getDocumentList().get("PS"));
+//        testApplication1.removeDocument("CV");
+//        testApplication2.removeDocument("CV");
+//        testApplication3.removeDocument("CV");
+//        assertFalse(testApplication1.getDocumentList().containsKey("CV"));
+//        assertFalse(testApplication2.getDocumentList().containsKey("CV"));
+//        assertFalse(testApplication3.getDocumentList().containsKey("CV"));
+//    }
 }

@@ -26,11 +26,11 @@ public class ApplicationListTest {
         assertTrue(testList.getApplicationList().containsKey("TestComp1_TestPos1"));
         assertTrue(testList.getApplicationList().containsKey("TestComp2_TestPos2"));
         assertTrue(testList.getApplicationList().containsKey("TestComp3_TestPos3"));
-        testList.removeApplication("TestComp1","TestPos1");
+        testList.removeApplication(testList.getApplication("TestComp1", "TestPos1"));
         assertFalse(testList.getApplicationList().containsKey("TestComp1_TestPos1"));
-        testList.removeApplication("TestComp2","TestPos2");
+        testList.removeApplication(testList.getApplication("TestComp2", "TestPos2"));
         assertFalse(testList.getApplicationList().containsKey("TestComp2_TestPos2"));
-        testList.removeApplication("TestComp3","TestPos3");
+        testList.removeApplication(testList.getApplication("TestComp3", "TestPos3"));
         assertFalse(testList.getApplicationList().containsKey("TestComp3_TestPos3"));
     }
 }
