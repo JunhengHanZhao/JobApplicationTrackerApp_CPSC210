@@ -93,7 +93,6 @@ public class JobApplicationManager {
     }
 
     // EFFECTS: display all created applications
-    @SuppressWarnings("checkstyle:MethodLength")
     private void viewApplication() {
         String applicationStatus = "";
         String applicationDeadline = "";
@@ -101,17 +100,7 @@ public class JobApplicationManager {
             String companyName = list.getApplicationList().get(name).getCompanyName();
             String positionName = list.getApplicationList().get(name).getPositionName();
             int status = list.getApplicationList().get(name).getApplicationStatus();
-            if (status == 0) {
-                applicationStatus = "Not Submitted";
-            } else if (status == 1) {
-                applicationStatus = "Waiting for reply";
-            } else if (status == 2) {
-                applicationStatus = "Waiting for interview";
-            } else if (status == 3) {
-                applicationStatus = "Rejected";
-            } else if (status == 4) {
-                applicationStatus = "Ghosted";
-            }
+            applicationStatus = applicationStatus(status);
             int deadline = list.getApplicationList().get(name).getApplicationDeadline();
             if (deadline == -1) {
                 applicationDeadline = "Not applicable";
@@ -121,6 +110,23 @@ public class JobApplicationManager {
             System.out.println("Applied Company: " + companyName + ", Applied Position: " + positionName
                     + ", Application Status: " + applicationStatus + ", Application Deadline: " + applicationDeadline);
         }
+    }
+
+    // helper method
+    private String applicationStatus(int status) {
+        String applicationStatus = "";
+        if (status == 0) {
+            applicationStatus = "Not Submitted";
+        } else if (status == 1) {
+            applicationStatus = "Waiting for reply";
+        } else if (status == 2) {
+            applicationStatus = "Waiting for interview";
+        } else if (status == 3) {
+            applicationStatus = "Rejected";
+        } else if (status == 4) {
+            applicationStatus = "Ghosted";
+        }
+        return applicationStatus;
     }
 
     // EFFECTS: add user specified application
