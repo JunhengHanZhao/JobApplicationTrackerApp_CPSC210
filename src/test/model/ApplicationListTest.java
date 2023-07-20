@@ -33,4 +33,14 @@ public class ApplicationListTest {
         testList.removeApplication(testList.getApplication("TestComp3", "TestPos3"));
         assertFalse(testList.getApplicationList().containsKey("TestComp3_TestPos3"));
     }
+
+    @Test
+    void testUrgent() {
+        testList.addApplication(-1,"TestComp1","TestPos1");
+        testList.addApplication(-1,"TestComp2","TestPos2");
+        assertEquals(testList.getApplication("TestComp1","TestPos1"), testList.mostUrgentApplication());
+        testList.addApplication(5,"TestComp3","TestPos3");
+        testList.addApplication(3,"TestComp4","TestPos4");
+        assertEquals(testList.getApplication("TestComp4","TestPos4"), testList.mostUrgentApplication());
+    }
 }

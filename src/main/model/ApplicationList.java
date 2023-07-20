@@ -1,6 +1,11 @@
 package model;
 
+import com.sun.jdi.Value;
+
+import java.security.Key;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 // represent A list of applications
 public class ApplicationList {
@@ -11,6 +16,27 @@ public class ApplicationList {
     // EFFECTS: Construct an application list
     public ApplicationList() {
         this.applicationList = new HashMap<String, Application>();
+    }
+
+    // EFFECTS: Return the application with shortest deadline
+    public Application mostUrgentApplication() {
+        int shortestDeadline = 1000000;
+        String shortestDeadlineName = "";
+        String noDeadlineName = "";
+        for (String name: this.applicationList.keySet()) {
+            int deadline = this.applicationList.get(name).getApplicationDeadline();
+            if (deadline > 0 && deadline < shortestDeadline) {
+                shortestDeadline = deadline;
+                shortestDeadlineName = name;
+            } else if (deadline == -1) {
+                noDeadlineName = name;
+            }
+        }
+        if (shortestDeadlineName != "") {
+            return  applicationList.get(shortestDeadlineName);
+        } else {
+            return  applicationList.get(noDeadlineName);
+        }
     }
 
     // REQUIRES: application has to not exist, applicationDeadline > 0 or = -1,

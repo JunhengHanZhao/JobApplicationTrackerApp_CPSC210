@@ -53,6 +53,8 @@ public class JobApplicationManager {
             deleteApplication();
         } else if (command.equals("e")) {
             editApplication();
+        } else if (command.equals("r")) {
+            viewUrgent();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -73,6 +75,8 @@ public class JobApplicationManager {
         System.out.println("\ta -> add application");
         System.out.println("\td -> delete application");
         System.out.println("\te -> edit application");
+        System.out.println("\tr -> view urgent");
+        System.out.println("\tq -> quit");
     }
 
     // EFFECTS: prompts user to select an application in the list
@@ -185,6 +189,18 @@ public class JobApplicationManager {
             application.modifyApplicationDeadline(deadline);
         } else {
             System.out.println("Selection not valid...");
+        }
+    }
+
+    private void viewUrgent() {
+        Application urgentApplication = list.mostUrgentApplication();
+        if (urgentApplication.getApplicationDeadline() >= 0) {
+            System.out.println("Most Urgent Application is: " + ", Company: "
+                    + urgentApplication.getCompanyName() + ", Position: "
+                    + urgentApplication.getPositionName() + ", Deadline: "
+                    + urgentApplication.getApplicationDeadline() + " Days");
+        } else {
+            System.out.println("None of your application has deadline");
         }
     }
 
