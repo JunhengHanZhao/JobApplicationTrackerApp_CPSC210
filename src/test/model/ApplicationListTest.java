@@ -36,6 +36,7 @@ public class ApplicationListTest {
 
     @Test
     void testUrgent() {
+        assertNull(testList.mostUrgentApplication());
         testList.addApplication(-1,"TestComp1","TestPos1");
         testList.addApplication(-1,"TestComp2","TestPos2");
         assertEquals(testList.getApplication("TestComp1","TestPos1"), testList.mostUrgentApplication());
