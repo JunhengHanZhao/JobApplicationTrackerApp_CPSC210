@@ -25,3 +25,5 @@ This makes me want to create this tool.
 - As a user, I want to change the status of my application: Not submitted / 
 Waiting for reply / interview X/Y / rejected / ghosted (no reply after 30 days)
 - As a user, I want to set deadlines for my "not submitted" applications
+- As a user, I want to be able to save my applications to file (if I so choose)
+- As a user, I want to be able to be able to load my applications from file (if I so choose)

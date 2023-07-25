@@ -192,6 +192,7 @@ public class JobApplicationManager {
         }
     }
 
+    // EFFECTS: display the most urgent application
     private void viewUrgent() {
         Application urgentApplication = list.mostUrgentApplication();
         if (urgentApplication.getApplicationDeadline() >= 0) {

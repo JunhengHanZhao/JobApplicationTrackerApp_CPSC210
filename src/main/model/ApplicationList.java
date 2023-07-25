@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-// represent A list of applications
+// represent A list of applications and hold methods for it
 public class ApplicationList {
     // A list of applications being collected
     private HashMap<String, Application> applicationList;
@@ -18,7 +18,7 @@ public class ApplicationList {
         this.applicationList = new HashMap<String, Application>();
     }
 
-    // EFFECTS: Return the application with shortest deadline
+    // EFFECTS: Return the application with the shortest deadline
     public Application mostUrgentApplication() {
         int shortestDeadline = 1000000;
         String shortestDeadlineName = "";
