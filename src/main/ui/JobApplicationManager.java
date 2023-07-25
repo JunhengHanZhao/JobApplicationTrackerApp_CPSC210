@@ -3,18 +3,28 @@ package ui;
 import com.sun.jdi.Value;
 import model.Application;
 import model.ApplicationList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.Key;
 import java.util.Scanner;
 
 // Job application manager application
 public class JobApplicationManager {
-
+    private static final String JSON_STORE = "./data/workroom.json";
     private Scanner input;
     private ApplicationList list;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the application manager app
     public JobApplicationManager() {
+        input = new Scanner(System.in);
+        list = new ApplicationList();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runApp();
     }
 
@@ -53,8 +63,12 @@ public class JobApplicationManager {
             deleteApplication();
         } else if (command.equals("e")) {
             editApplication();
-        } else if (command.equals("r")) {
+        } else if (command.equals("u")) {
             viewUrgent();
+        } else if (command.equals("s")) {
+            saveProgress();
+        } else if (command.equals("l")) {
+            loadProgress();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -75,7 +89,9 @@ public class JobApplicationManager {
         System.out.println("\ta -> add application");
         System.out.println("\td -> delete application");
         System.out.println("\te -> edit application");
-        System.out.println("\tr -> view urgent");
+        System.out.println("\tu -> view urgent");
+        System.out.println("\ts -> save current applications");
+        System.out.println("\tl -> load saved applications");
         System.out.println("\tq -> quit");
     }
 
@@ -180,7 +196,10 @@ public class JobApplicationManager {
 
         command = input.next();
         if (command.equals("s")) {
-            System.out.println("Please specify the new application status");
+            System.out.println("Please specify the new application status, "
+                    + "\nUsing an integer represent status of the application, \n0 means not submitted, "
+                    + "\n1 means waiting for reply, \n2 means in process of interview, "
+                    + "\nl3 means rejected, \n4 means ghosted.");
             status = input.nextInt();
             application.modifyApplicationStatus(status);
         } else if (command.equals("d")) {
@@ -202,6 +221,30 @@ public class JobApplicationManager {
                     + urgentApplication.getApplicationDeadline() + " Days");
         } else {
             System.out.println("None of your application has deadline");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: saves workroom from file
+    private void saveProgress() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(list);
+            jsonWriter.close();
+            System.out.println("Saved to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadProgress() {
+        try {
+            list = jsonReader.read();
+            System.out.println("Loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 
