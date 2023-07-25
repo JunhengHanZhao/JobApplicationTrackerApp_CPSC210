@@ -1,0 +1,14 @@
+{"applications": [
+    {
+        "position name": "TestPos1",
+        "company name": "TestCom1",
+        "application status": 0,
+        "application deadline": -1
+    },
+    {
+        "position name": "TestPos2",
+        "company name": "TestCom2",
+        "application status": 0,
+        "application deadline": 10
+    }
+]}
