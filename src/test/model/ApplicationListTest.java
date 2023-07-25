@@ -20,9 +20,9 @@ public class ApplicationListTest {
 
     @Test
     void testEditingList() {
-        testList.addApplication(-1,"TestComp1","TestPos1");
-        testList.addApplication(1,"TestComp2","TestPos2");
-        testList.addApplication(5,"TestComp3","TestPos3");
+        testList.addApplication(new Application(-1,"TestComp1","TestPos1"));
+        testList.addApplication(new Application(1,"TestComp2","TestPos2"));
+        testList.addApplication(new Application(5,"TestComp3","TestPos3"));
         assertTrue(testList.getApplicationList().containsKey("TestComp1_TestPos1"));
         assertTrue(testList.getApplicationList().containsKey("TestComp2_TestPos2"));
         assertTrue(testList.getApplicationList().containsKey("TestComp3_TestPos3"));
@@ -37,11 +37,11 @@ public class ApplicationListTest {
     @Test
     void testUrgent() {
         assertNull(testList.mostUrgentApplication());
-        testList.addApplication(-1,"TestComp1","TestPos1");
-        testList.addApplication(-1,"TestComp2","TestPos2");
+        testList.addApplication(new Application(-1,"TestComp1","TestPos1"));
+        testList.addApplication(new Application(-1,"TestComp2","TestPos2"));
         assertEquals(testList.getApplication("TestComp1","TestPos1"), testList.mostUrgentApplication());
-        testList.addApplication(5,"TestComp3","TestPos3");
-        testList.addApplication(3,"TestComp4","TestPos4");
+        testList.addApplication(new Application(5,"TestComp3","TestPos3"));
+        testList.addApplication(new Application(3,"TestComp4","TestPos4"));
         assertEquals(testList.getApplication("TestComp4","TestPos4"), testList.mostUrgentApplication());
     }
 }

@@ -1,6 +1,9 @@
 package model;
 
 import com.sun.jdi.Value;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.security.Key;
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // represent A list of applications and hold methods for it
-public class ApplicationList {
+public class ApplicationList implements Writable {
     // A list of applications being collected
     private HashMap<String, Application> applicationList;
 
@@ -43,15 +46,15 @@ public class ApplicationList {
     // companyName and positionName has length >0
     // MODIFIES: This
     // EFFECTS: add an application into application list
-    public void addApplication(int deadline, String companyName, String positionName) {
-        this.applicationList.put(companyName + "_" + positionName,
-                new Application(deadline, companyName, positionName));
+    public void addApplication(Application application) {
+        String companyName = application.getCompanyName();
+        String positionName = application.getPositionName();
+        this.applicationList.put(companyName + "_" + positionName, application);
     }
 
     // REQUIRES: application has to exist, companyName and positionName has length >0
     // MODIFIES: This
     // EFFECTS: remove an application from application list
-
     public void removeApplication(Application selectedApplication) {
         this.applicationList.remove(selectedApplication.getCompanyName() + "_"
                 + selectedApplication.getPositionName());
@@ -63,5 +66,24 @@ public class ApplicationList {
 
     public HashMap<String, Application> getApplicationList() {
         return applicationList;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("applications", applicationsToJson());
+        return json;
+    }
+
+    // EFFECT: returns applications in this application list as a JSON array
+    private JSONArray applicationsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (String name: this.applicationList.keySet()) {
+            Application a = this.applicationList.get(name);
+            jsonArray.put(a.toJson());
+        }
+
+        return jsonArray;
     }
 }

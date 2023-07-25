@@ -157,7 +157,7 @@ public class JobApplicationManager {
         System.out.println("What's the position applying?");
         position = input.next();
 
-        list.addApplication(deadline, company, position);
+        list.addApplication(new Application(deadline, company, position));
     }
 
     // EFFECTS: delete an existing application

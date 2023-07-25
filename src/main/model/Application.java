@@ -1,9 +1,11 @@
 package model;
 
-import java.util.HashMap;
+import org.json.JSONObject;
+import persistence.Writable;
+
 
 //Represent an application having a status, deadline, document list
-public class Application {
+public class Application implements Writable {
     // The name of the company
     private String companyName;
 
@@ -19,10 +21,6 @@ public class Application {
     // acceptance of application, -1 means deadline is not applicable.
     private int applicationDeadline;
 
-    // name of documents in a hashmap, name is the key entry and the boolean represents
-    // the status of the documents' preparation, true means ready, false means not ready.
-    //private HashMap<String, Boolean> documentList;
-
     // REQUIRES: applicationDeadline > 0 or = -1, companyName and positionName has length >0
     // MODIFIES: This
     // EFFECTS: Construct an application
@@ -31,7 +29,6 @@ public class Application {
         this.positionName = positionName;
         this.applicationStatus = 0;
         this.applicationDeadline = applicationDeadline;
-        //this.documentList = new HashMap<String, Boolean>();
     }
 
     // REQUIRES: applicationStatus = 0 ~ 4
@@ -47,27 +44,6 @@ public class Application {
     public void modifyApplicationDeadline(int applicationDeadline) {
         this.applicationDeadline = applicationDeadline;
     }
-
-    // REQUIRES: file has to not exist, fileName has length >0
-    // MODIFIES: This
-    // EFFECTS: Add a document into document list
-    //public void addDocument(String fileName, boolean fileStatus) {
-        //this.documentList.put(fileName, fileStatus);
-    //}
-
-    // REQUIRES: file has to exist, fileName has length >0
-    // MODIFIES: This
-    // EFFECTS: Add a document into document list
-    // public void removeDocument(String fileName) {
-    //      this.documentList.remove(fileName);
-    //}
-
-    // REQUIRES: file has to exist, fileName has length >0
-    // MODIFIES: This
-    // EFFECTS: Change the status of this file
-    // public void modifyDocumentStatus(String fileName, boolean fileStatus) {
-    //    this.documentList.replace(fileName, fileStatus);
-    // }
 
     // A bunch on getter methods below here
     public String getCompanyName() {
@@ -86,7 +62,13 @@ public class Application {
         return applicationDeadline;
     }
 
-//    public HashMap<String, Boolean> getDocumentList() {
-//        return documentList;
-//    }
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("company name", companyName);
+        json.put("position name", positionName);
+        json.put("application status", applicationStatus);
+        json.put("application deadline", applicationDeadline);
+        return json;
+    }
 }
