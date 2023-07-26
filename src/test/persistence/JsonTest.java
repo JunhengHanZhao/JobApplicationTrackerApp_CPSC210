@@ -4,6 +4,7 @@ import model.Application;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Adapted from JsonSerializationModel   // Adapted from JsonSerializationModel
 public class JsonTest {
     protected void checkApplication(String companyName, String positionName, int applicationStatus,
                                int applicationDeadline, Application application) {

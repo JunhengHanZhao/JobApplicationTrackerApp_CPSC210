@@ -224,6 +224,7 @@ public class JobApplicationManager {
         }
     }
 
+    // Adapted from JsonSerializationModel
     // MODIFIES: this
     // EFFECTS: saves workroom from file
     private void saveProgress() {

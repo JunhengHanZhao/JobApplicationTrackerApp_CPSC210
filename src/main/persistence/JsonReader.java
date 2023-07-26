@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// Adapted from JsonSerializationModel
+// Reader for json files
 public class JsonReader {
     private String source;
 

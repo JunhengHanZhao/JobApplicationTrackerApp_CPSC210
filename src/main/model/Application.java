@@ -62,6 +62,7 @@ public class Application implements Writable {
         return applicationDeadline;
     }
 
+    // Adapted from JsonSerializationModel
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

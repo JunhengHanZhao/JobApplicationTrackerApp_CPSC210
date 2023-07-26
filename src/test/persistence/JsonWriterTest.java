@@ -11,6 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// Adapted from JsonSerializationModel
 class JsonWriterTest extends JsonTest {
     // Run this writer test before running reader test
 

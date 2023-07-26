@@ -68,6 +68,7 @@ public class ApplicationList implements Writable {
         return applicationList;
     }
 
+    // Adapted from JsonSerializationModel
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
