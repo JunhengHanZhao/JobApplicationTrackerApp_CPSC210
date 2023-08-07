@@ -1,0 +1,20 @@
+{"applications": [
+    {
+        "position name": "1",
+        "company name": "1",
+        "application status": 0,
+        "application deadline": 1
+    },
+    {
+        "position name": "Test Position 2",
+        "company name": "Test Company 2",
+        "application status": 0,
+        "application deadline": 20
+    },
+    {
+        "position name": "Test Position 1",
+        "company name": "Test Company 1",
+        "application status": 0,
+        "application deadline": -1
+    }
+]}

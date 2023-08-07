@@ -27,3 +27,11 @@ Waiting for reply / interview X/Y / rejected / ghosted (no reply after 30 days)
 - As a user, I want to set deadlines for my "not submitted" applications
 - As a user, I want to be able to save my applications to file (if I so choose)
 - As a user, I want to be able to be able to load my applications from file (if I so choose)
+
+### Instructions for Grader
+- To add a new application: Type in application company name, position name and deadline the press Add button.
+- If there's no deadline for the application, deadline should be -1.
+- To display applications with no deadline, press Show No Deadline Button.
+- To go back press Refresh button.
+- Press Save to save, message with image will pop up.
+- Press Load to load, message with image will pop up.

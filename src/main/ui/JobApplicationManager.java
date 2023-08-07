@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 // Job application manager application
 public class JobApplicationManager {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/ApplicationManager.json";
     private Scanner input;
     private ApplicationList list;
     private JsonWriter jsonWriter;
