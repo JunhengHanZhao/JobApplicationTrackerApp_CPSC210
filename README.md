@@ -48,3 +48,8 @@ A new application has been added
 
 Wed Aug 09 17:21:17 PDT 2023
 Application with no deadline showed
+
+### Phase 4: Task 3:
+If I had more time:
+- I would refactor my code with exceptions to improve robustness.
+- I would make my Mianframe UI extend JFrame.
