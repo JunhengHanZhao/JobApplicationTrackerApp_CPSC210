@@ -35,3 +35,16 @@ Waiting for reply / interview X/Y / rejected / ghosted (no reply after 30 days)
 - To go back press Refresh button.
 - Press Save to save, message with image will pop up.
 - Press Load to load, message with image will pop up.
+
+### Phase 4: Task 2
+Wed Aug 09 17:21:15 PDT 2023
+Event log cleared.
+
+Wed Aug 09 17:21:15 PDT 2023
+A new application has been added
+
+Wed Aug 09 17:21:15 PDT 2023
+A new application has been added
+
+Wed Aug 09 17:21:17 PDT 2023
+Application with no deadline showed

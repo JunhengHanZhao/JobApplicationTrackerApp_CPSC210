@@ -146,12 +146,8 @@ public class StartPanel extends JPanel implements ActionListener {
     // MODIFIES: this
     public void loadNA(HashMap<String,Application> localApplicationList) {
         startPanel.remove(applicationTable);
-        ArrayList<Application> localNAList = new ArrayList<>();
-        for (Map.Entry<String, Application> entry : localApplicationList.entrySet()) {
-            if (entry.getValue().getApplicationDeadline() == -1) {
-                localNAList.add(entry.getValue());
-            }
-        }
+        ArrayList<Application> localNAList = applicationList.applicationsNoDeadline();
+
         applicationTable = new JTable(localNAList.size() + 1, 3);
         applicationTable.setValueAt("Company", 0, 0);
         applicationTable.setValueAt("Position", 0, 1);

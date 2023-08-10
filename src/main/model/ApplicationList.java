@@ -23,6 +23,7 @@ public class ApplicationList implements Writable {
 
     // EFFECTS: Return the application with the shortest deadline
     public Application mostUrgentApplication() {
+        EventLog.getInstance().logEvent(new Event("Most urgent application showed"));
         int shortestDeadline = 1000000;
         String shortestDeadlineName = "";
         String noDeadlineName = "";
@@ -42,6 +43,18 @@ public class ApplicationList implements Writable {
         }
     }
 
+    // EFFECTS: Return the application with no deadline
+    public ArrayList<Application> applicationsNoDeadline() {
+        EventLog.getInstance().logEvent(new Event("Application with no deadline showed"));
+        ArrayList<Application> localNAList = new ArrayList<>();
+        for (Map.Entry<String, Application> entry : applicationList.entrySet()) {
+            if (entry.getValue().getApplicationDeadline() == -1) {
+                localNAList.add(entry.getValue());
+            }
+        }
+        return localNAList;
+    }
+
     // REQUIRES: application has to not exist, applicationDeadline > 0 or = -1,
     // companyName and positionName has length >0
     // MODIFIES: This
@@ -50,6 +63,7 @@ public class ApplicationList implements Writable {
         String companyName = application.getCompanyName();
         String positionName = application.getPositionName();
         this.applicationList.put(companyName + "_" + positionName, application);
+        EventLog.getInstance().logEvent(new Event("A new application has been added"));
     }
 
     // REQUIRES: application has to exist, companyName and positionName has length >0
@@ -58,6 +72,7 @@ public class ApplicationList implements Writable {
     public void removeApplication(Application selectedApplication) {
         this.applicationList.remove(selectedApplication.getCompanyName() + "_"
                 + selectedApplication.getPositionName());
+        EventLog.getInstance().logEvent(new Event("An application has been removed"));
     }
 
     public Application getApplication(String companyName, String positionName) {
